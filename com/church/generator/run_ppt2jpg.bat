@@ -1,0 +1,2 @@
+ppt2jpgGenerator_v2.py
+pause
