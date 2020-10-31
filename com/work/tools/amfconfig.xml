@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<amf-system xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<application>
+		<application-name>ACMI</application-name>
+		<host-name></host-name>
+		<port-number></port-number>
+	</application>
+
+	<!-- these element is not used now, if use it in the futrue, need set global value "USE_JNDI_ENV_PARM" in config.xml as "true" -->
+	<jndi-properties>
+		<java.naming.factory.initial></java.naming.factory.initial>
+		<java.naming.provider.url></java.naming.provider.url>
+		<java.naming.security.principal></java.naming.security.principal>
+		<java.naming.security.credentials></java.naming.security.credentials>
+	</jndi-properties>
+
+	<!-- receiver destination's connection-facatory must be a non-XA connection factory If no recovery queue, just set <dest-recovery-queue-name> with empty value -->
+	<receiver>
+		<msg-destinations>
+			<msg-destination>
+				<dest-name>IR4.ACM.EI.PCMSEUPDATE</dest-name>
+				<connection-factory>MessageFrameworkCF</connection-factory>
+				<number-destination-instances>2</number-destination-instances>
+				<queue>
+					<dest-exception-queue-name>IR4.ACM.EI.PCMSEUPDATEEXCEPTION</dest-exception-queue-name>
+					<dest-recovery-queue-name />
+					<number-recovery-instances />
+				</queue>
+			</msg-destination>
+			<msg-destination>	
+				<dest-name>B2B.ACM.JPAM.RESPONSE</dest-name>
+				<connection-factory>MessageFrameworkCF</connection-factory>
+				<number-destination-instances>2</number-destination-instances>
+				<queue>
+					<dest-exception-queue-name>B2B.ACM.JPAM.RESPONSEEXCEPTION</dest-exception-queue-name>
+					<dest-recovery-queue-name />
+					<number-recovery-instances />
+				</queue>
+			</msg-destination>
+			<msg-destination>
+				<dest-name>IR4.ACM.EI.USDSMRESPONSE</dest-name>
+				<connection-factory>MessageFrameworkCF</connection-factory>
+				<number-destination-instances>2</number-destination-instances>
+				<queue>
+					<dest-exception-queue-name>IR4.ACM.EI.USDSMRESPONSEEXCEPTION</dest-exception-queue-name>
+					<dest-recovery-queue-name />
+					<number-recovery-instances />
+				</queue>
+			</msg-destination>
+			<msg-destination>
+				<dest-name>IR4.ACM.EI.EUDSMRESPONSE</dest-name>
+				<connection-factory>MessageFrameworkCF</connection-factory>
+				<number-destination-instances>2</number-destination-instances>
+				<queue>
+					<dest-exception-queue-name>IR4.ACM.EI.EUDSMRESPONSEEXCEPTION</dest-exception-queue-name>
+					<dest-recovery-queue-name />
+					<number-recovery-instances />
+				</queue>
+			</msg-destination>
+			<msg-destination>
+				<dest-name>IR4.ACM.EI.CNDSMRESPONSE</dest-name>
+				<connection-factory>MessageFrameworkCF</connection-factory>
+				<number-destination-instances>2</number-destination-instances>
+				<queue>
+					<dest-exception-queue-name>IR4.ACM.EI.CNDSMRESPONSEEXCEPTION</dest-exception-queue-name>
+					<dest-recovery-queue-name />
+					<number-recovery-instances />
+				</queue>
+			</msg-destination>
+			<msg-destination>
+				<dest-name>IR4.ACM.EI.ILDSMRESPONSE</dest-name>
+				<connection-factory>MessageFrameworkCF</connection-factory>
+				<number-destination-instances>2</number-destination-instances>
+				<queue>
+					<dest-exception-queue-name>IR4.ACM.EI.ILDSMRESPONSEEXCEPTION</dest-exception-queue-name>
+					<dest-recovery-queue-name />
+					<number-recovery-instances />
+				</queue>
+			</msg-destination>
+			<msg-destination>
+				<dest-name>IR4.ACM.EI.JPDSMRESPONSE</dest-name>
+				<connection-factory>MessageFrameworkCF</connection-factory>
+				<number-destination-instances>2</number-destination-instances>
+				<queue>
+					<dest-exception-queue-name>IR4.ACM.EI.JPDSMRESPONSEEXCEPTION</dest-exception-queue-name>
+					<dest-recovery-queue-name />
+					<number-recovery-instances />
+				</queue>
+			</msg-destination>
+			<msg-destination>	
+				<dest-name>IR4.ACM.EI.CANDSMRESPONSE</dest-name>
+				<connection-factory>MessageFrameworkCF</connection-factory>
+				<number-destination-instances>2</number-destination-instances>
+				<queue>
+					<dest-exception-queue-name>IR4.ACM.EI.CANDSMRESPONSEEXCEPTION</dest-exception-queue-name>
+					<dest-recovery-queue-name />
+					<number-recovery-instances />
+				</queue>
+			</msg-destination>			
+		</msg-destinations>
+		<msg-brokers>
+			<dest-broker>
+				<msg-dest-name>IR4.ACM.EI.PCMSEUPDATE</msg-dest-name>
+				<default-dest-broker-class-name>com.oocl.ir4.acm.ei.eventreceiver.SubmissionEventBroker</default-dest-broker-class-name>
+			</dest-broker>
+			<dest-broker>		
+				<msg-dest-name>B2B.ACM.JPAM.RESPONSE</msg-dest-name>
+				<default-dest-broker-class-name>com.oocl.ir4.acm.ei.messagereceiver.ResponseMessageBroker</default-dest-broker-class-name>
+			</dest-broker>
+			<dest-broker>
+				<msg-dest-name>IR4.ACM.EI.USDSMRESPONSE</msg-dest-name>
+				<default-dest-broker-class-name>com.oocl.ir4.acm.ei.dsm.messagereciever.UsCustomsResponseMessageBroker</default-dest-broker-class-name>
+			</dest-broker>
+			<dest-broker>	
+				<msg-dest-name>IR4.ACM.EI.JPDSMRESPONSE</msg-dest-name>
+				<default-dest-broker-class-name>com.oocl.ir4.acm.ei.dsm.messagereciever.JpCustomsResponseMessageBroker</default-dest-broker-class-name>
+			</dest-broker>
+			<dest-broker>
+				<msg-dest-name>IR4.ACM.EI.ILDSMRESPONSE</msg-dest-name>
+				<default-dest-broker-class-name>com.oocl.ir4.acm.ei.dsm.messagereciever.IlCustomsResponseMessageBroker</default-dest-broker-class-name>
+			</dest-broker>
+			<dest-broker>
+				<msg-dest-name>IR4.ACM.EI.CANDSMRESPONSE</msg-dest-name>
+				<default-dest-broker-class-name>com.oocl.ir4.acm.ei.dsm.messagereciever.CanCustomsResponseMessageBroker</default-dest-broker-class-name>
+			</dest-broker>
+			<dest-broker>
+				<msg-dest-name>IR4.ACM.EI.CNDSMRESPONSE</msg-dest-name>
+				<default-dest-broker-class-name>com.oocl.ir4.acm.ei.dsm.messagereciever.CnCustomsResponseMessageBroker</default-dest-broker-class-name>
+			</dest-broker>		
+			<dest-broker>
+				<msg-dest-name>IR4.ACM.EI.EUDSMRESPONSE</msg-dest-name>
+				<default-dest-broker-class-name>com.oocl.ir4.acm.ei.dsm.messagereciever.EuCustomsResponseMessageBroker</default-dest-broker-class-name>
+			</dest-broker>			
+		</msg-brokers>
+	</receiver>
+
+	<sender>
+		<msg-destinations>
+			<msg-destination>
+				<dest-name>IR4.ACM.EI.EVT</dest-name>
+				<isQueue>false</isQueue>
+				<connection-factory>MessageFrameworkXACF</connection-factory>
+				<timeOfSuspicion>0</timeOfSuspicion>
+			</msg-destination>
+			<msg-destination>
+				<dest-name>IR4.CSB2B.INT.ACM_JPAM_REQ_IN_TPC</dest-name>
+				<isQueue>false</isQueue>
+				<connection-factory>MessageFrameworkXACF</connection-factory>
+				<timeOfSuspicion>0</timeOfSuspicion>
+			</msg-destination>
+			<msg-destination>
+				<dest-name>IR4.ACM.EI.RESPONSE</dest-name>
+				<isQueue>false</isQueue>
+				<connection-factory>MessageFrameworkXACF</connection-factory>
+				<timeOfSuspicion>0</timeOfSuspicion>
+			</msg-destination>
+			<msg-destination>
+				<dest-name>IR4.CSB2B.INT.ACM_JPAM_RPY_ACK_TPC</dest-name>
+				<isQueue>false</isQueue>
+				<connection-factory>MessageFrameworkXACF</connection-factory>
+				<timeOfSuspicion>0</timeOfSuspicion>
+			</msg-destination>
+			<msg-destination>
+				<dest-name>IR4.ACM.EI.DSMRESPONSE</dest-name>
+				<isQueue>true</isQueue>
+				<connection-factory>MessageFrameworkXACF</connection-factory>
+				<timeOfSuspicion>0</timeOfSuspicion>
+			</msg-destination>
+		</msg-destinations>
+	</sender>
+
+</amf-system>
